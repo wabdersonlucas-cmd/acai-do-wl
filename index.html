@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -176,7 +176,6 @@ border-radius:10px
 .stock-item{align-items:flex-start}
 }
 </style>
-
 </head>
 
 <body>
@@ -192,6 +191,7 @@ border-radius:10px
 <h2 class="section-title">🥤 Escolha o tamanho</h2>
 
 <div class="grid">
+
   <div class="card">
     <h3>300 ml</h3>
     <div class="desc">Açaí + 4 acompanhamentos.</div>
@@ -212,6 +212,7 @@ border-radius:10px
     <div class="price">R$ 26,00</div>
     <button class="add" onclick="addSimple('700 ml',26)">Adicionar</button>
   </div>
+
 </div>
 
 <h2 class="section-title">🍓 Monte seu açaí</h2>
@@ -252,14 +253,6 @@ border-radius:10px
 
 <label data-item="Banana">
 <input type="checkbox" value="Banana">Banana
-</label>
-
-<label data-item="Uva">
-<input type="checkbox" value="Uva">Uva
-</label>
-
-<label data-item="Manga">
-<input type="checkbox" value="Manga">Manga
 </label>
 
 <label data-item="Morango">
@@ -311,7 +304,8 @@ Adicionar
 
 <h3 style="margin-top:0">📦 Seus dados</h3>
 
-<label for="name">Nome</label> <input id="name" placeholder="Seu nome">
+<label for="name">Nome</label>
+<input id="name" placeholder="Seu nome">
 
 <label for="address">Endereço</label>
 
@@ -380,17 +374,15 @@ id="adminPin"
 type="password"
 inputmode="numeric"
 placeholder="Digite o PIN"
-
 >
 
 <button
 class="add"
 style="margin-top:10px"
 onclick="checkPin()"
-
 >
-
-Entrar </button>
+Entrar
+</button>
 
 </div>
 
@@ -420,13 +412,10 @@ Fechar painel
 // CONFIGURAÇÕES
 // ================================
 
-// WhatsApp da loja
 const WHATSAPP = "5532987064492";
 
-// PIN DO PAINEL DA LOJA
 const ADMIN_PIN = "1234";
 
-// Produtos/ingredientes controláveis
 const stockItems = [
 "Ovomaltine",
 "Chocobool",
@@ -434,8 +423,6 @@ const stockItems = [
 "Granulado",
 "Paçoca",
 "Banana",
-"Uva",
-"Manga",
 "Morango",
 "Chocolate",
 "Leite condensado",
@@ -468,7 +455,6 @@ JSON.stringify(stockStatus)
 
 function updateMenu(){
 
-// Acompanhamentos
 document.querySelectorAll("#toppings label").forEach(label=>{
 
 const name=label.dataset.item;
@@ -479,12 +465,14 @@ label.classList.remove("hidden");
 label.classList.add("hidden");
 
 const checkbox=label.querySelector("input");
-if(checkbox) checkbox.checked=false;
+
+if(checkbox){
+checkbox.checked=false;
+}
 }
 
 });
 
-// Caldas
 const syrup=document.getElementById("syrup");
 
 [...syrup.options].forEach(option=>{
@@ -499,7 +487,6 @@ syrup.value="";
 
 });
 
-// Premium
 document.querySelectorAll("[data-premium]").forEach(card=>{
 
 const name=card.dataset.premium;
@@ -523,8 +510,11 @@ renderStockPanel();
 function openAdmin(){
 
 document.getElementById("adminPanel").style.display="block";
+
 document.getElementById("adminPin").value="";
+
 document.getElementById("pinArea").classList.remove("hidden");
+
 document.getElementById("stockArea").classList.add("hidden");
 
 }
@@ -540,11 +530,15 @@ function checkPin(){
 const pin=document.getElementById("adminPin").value;
 
 if(pin!==ADMIN_PIN){
+
 alert("PIN incorreto.");
+
 return;
+
 }
 
 document.getElementById("pinArea").classList.add("hidden");
+
 document.getElementById("stockArea").classList.remove("hidden");
 
 renderStockPanel();
@@ -565,11 +559,13 @@ return `
 <div class="stock-item">
 
 <div>
+
 <div class="stock-name">${name}</div>
 
 <span class="status ${available?"available":"paused"}">
 ${available?"DISPONÍVEL":"PAUSADO"}
 </span>
+
 </div>
 
 <button
@@ -591,6 +587,7 @@ function toggleStock(name){
 stockStatus[name]=!isAvailable(name);
 
 saveStock();
+
 updateMenu();
 
 }
@@ -602,19 +599,27 @@ updateMenu();
 let cart=[];
 
 function money(v){
+
 return v.toFixed(2).replace('.',',');
+
 }
 
 function addSimple(name,price){
 
 if(name.includes("Nutella") && !isAvailable("Nutella")){
+
 alert("Nutella está temporariamente indisponível.");
+
 return;
+
 }
 
 if(name.includes("Creme da Casa") && !isAvailable("Creme da Casa")){
+
 alert("Creme da Casa está temporariamente indisponível.");
+
 return;
+
 }
 
 cart.push({
@@ -640,6 +645,7 @@ const checks=[
 if(checks.length>4){
 
 alert("Escolha no máximo 4 acompanhamentos.");
+
 return;
 
 }
@@ -653,7 +659,9 @@ let details=toppings.length
 :"Sem acompanhamentos";
 
 if(syrup){
+
 details+=" | Calda: "+syrup;
+
 }
 
 cart.push({
@@ -712,6 +720,7 @@ money(cart.reduce((s,x)=>s+x.price,0));
 function removeItem(i){
 
 cart.splice(i,1);
+
 render();
 
 }
@@ -719,6 +728,7 @@ render();
 function clearCart(){
 
 cart=[];
+
 render();
 
 }
@@ -732,6 +742,7 @@ function sendWhatsApp(){
 if(!cart.length){
 
 alert("Adicione pelo menos um produto.");
+
 return;
 
 }
@@ -748,6 +759,7 @@ document.getElementById("payment").value;
 if(!name){
 
 alert("Informe seu nome.");
+
 return;
 
 }
@@ -755,6 +767,7 @@ return;
 if(!address){
 
 alert("Informe o endereço.");
+
 return;
 
 }
@@ -762,25 +775,35 @@ return;
 const total=
 cart.reduce((s,x)=>s+x.price,0);
 
-let msg="🍇 *NOVO PEDIDO — AÇAÍ DO WL*\\n\\n";
+let msg="🍇 *NOVO PEDIDO — AÇAÍ DO WL*\n\n";
 
-msg+="👤 Cliente: "+name+"\\n";
-msg+="📍 Endereço: "+address+"\\n";
-msg+="💳 Pagamento: "+payment+"\\n\\n";
+msg+="👤 *Cliente:* "+name+"\n";
 
-msg+="🛒 *Pedido:*\\n";
+msg+="📍 *Endereço:* "+address+"\n";
+
+msg+="💳 *Pagamento:* "+payment+"\n\n";
+
+msg+="🛒 *PEDIDO*\n\n";
 
 cart.forEach((x,i)=>{
 
-msg+=`${i+1}. ${x.name} — R$ ${money(x.price)}\\n`;
+msg+=`🥤 *${i+1}. ${x.name}* — R$ ${money(x.price)}\n`;
 
 if(x.details){
-msg+=`   ${x.details}\\n`;
+
+let details=x.details
+.replace("Acompanhamentos:", "🍓 *Acompanhamentos:*")
+.replace(" | Calda:", "\n🍫 *Calda:*");
+
+msg+=details+"\n";
+
 }
+
+msg+="\n";
 
 });
 
-msg+="\\n💰 *TOTAL: R$ "+money(total)+"*";
+msg+="💰 *TOTAL: R$ "+money(total)+"*";
 
 window.open(
 "https://wa.me/"+WHATSAPP+
@@ -790,11 +813,16 @@ window.open(
 
 }
 
-// Inicializa
+// ================================
+// INICIALIZAÇÃO
+// ================================
+
 updateMenu();
+
 render();
 
 </script>
 
 </body>
 </html>
+```
