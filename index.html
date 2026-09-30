@@ -1,33 +1,186 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Açaí do WL | Cardápio</title>
+
 <style>
-:root{--purple:#5b21b6;--purple2:#7c3aed;--pink:#ec4899;--dark:#171717;--light:#f7f5fb;--white:#fff;--green:#25d366}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--dark)}
-header{background:linear-gradient(135deg,#3b0764,#7e22ce,#ec4899);color:#fff;text-align:center;padding:30px 18px 26px}
-.logo{width:92px;height:92px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--purple);font-size:22px;font-weight:900;box-shadow:0 8px 25px #0004}
-header h1{margin:5px 0;font-size:30px}header p{margin:6px 0 0;opacity:.92}
+:root{
+--purple:#5b21b6;--purple2:#7c3aed;--pink:#ec4899;
+--dark:#171717;--light:#f7f5fb;--white:#fff;--green:#25d366;
+--red:#dc2626;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--light);color:var(--dark)}
+
+header{
+background:linear-gradient(135deg,#3b0764,#7e22ce,#ec4899);
+color:#fff;text-align:center;padding:30px 18px 26px
+}
+.logo{
+width:92px;height:92px;border-radius:50%;background:#fff;
+display:flex;align-items:center;justify-content:center;
+margin:0 auto 12px;color:var(--purple);font-size:22px;
+font-weight:900;box-shadow:0 8px 25px #0004
+}
+header h1{margin:5px 0;font-size:30px}
+header p{margin:6px 0 0;opacity:.92}
+
 .container{max-width:850px;margin:auto;padding:18px}
 .section-title{font-size:22px;margin:22px 0 12px}
+
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.card{background:#fff;border-radius:18px;padding:16px;box-shadow:0 3px 15px #00000010}
-.card h3{margin:0 0 5px;font-size:19px}.desc{color:#666;font-size:13px;line-height:1.4;min-height:35px}.price{font-weight:800;color:var(--purple);font-size:18px;margin:9px 0}
-button{border:0;border-radius:12px;padding:11px 14px;font-weight:800;cursor:pointer}
-.add{background:var(--purple);color:#fff;width:100%}.add:hover{background:var(--purple2)}
-.custom{background:#fff;border-radius:18px;padding:16px;margin-top:14px;box-shadow:0 3px 15px #00000010}
-label{display:block;font-weight:700;margin:12px 0 6px}select,input,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;font-size:15px;background:#fff}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.checks label{font-weight:500;background:#f7f3ff;padding:9px;border-radius:9px;margin:0}
+.card{
+background:#fff;border-radius:18px;padding:16px;
+box-shadow:0 3px 15px #00000010
+}
+.card h3{margin:0 0 5px;font-size:19px}
+.desc{color:#666;font-size:13px;line-height:1.4;min-height:35px}
+.price{font-weight:800;color:var(--purple);font-size:18px;margin:9px 0}
+
+button{
+border:0;border-radius:12px;padding:11px 14px;
+font-weight:800;cursor:pointer
+}
+.add{background:var(--purple);color:#fff;width:100%}
+.add:hover{background:var(--purple2)}
+
+.custom{
+background:#fff;border-radius:18px;padding:16px;
+margin-top:14px;box-shadow:0 3px 15px #00000010
+}
+
+label{display:block;font-weight:700;margin:12px 0 6px}
+select,input,textarea{
+width:100%;padding:12px;border:1px solid #ddd;
+border-radius:10px;font-size:15px;background:#fff
+}
+
+.checks{
+display:grid;grid-template-columns:1fr 1fr;gap:8px
+}
+.checks label{
+font-weight:500;background:#f7f3ff;padding:9px;
+border-radius:9px;margin:0
+}
 .checks input{width:auto;margin-right:6px}
-.cart{position:sticky;bottom:12px;margin-top:22px;background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 30px #0003;border:2px solid #eee}
-.cart h2{margin:0 0 10px}.item{padding:9px 0;border-bottom:1px solid #eee;font-size:14px}.total{font-size:22px;font-weight:900;margin:15px 0}.whatsapp{background:var(--green);color:#fff;width:100%;font-size:17px;padding:15px}.clear{background:#eee;margin-top:8px;width:100%}
+
+.cart{
+position:sticky;bottom:12px;margin-top:22px;background:#fff;
+border-radius:20px;padding:18px;box-shadow:0 8px 30px #0003;
+border:2px solid #eee
+}
+.cart h2{margin:0 0 10px}
+.item{padding:9px 0;border-bottom:1px solid #eee;font-size:14px}
+.total{font-size:22px;font-weight:900;margin:15px 0}
+.whatsapp{
+background:var(--green);color:#fff;width:100%;
+font-size:17px;padding:15px
+}
+.clear{background:#eee;margin-top:8px;width:100%}
 .note{font-size:12px;color:#666;margin-top:8px;line-height:1.4}
-@media(max-width:600px){.grid{grid-template-columns:1fr 1fr}.card{padding:13px}.card h3{font-size:16px}.container{padding:12px}.checks{grid-template-columns:1fr 1fr}}
+
+/* PAINEL DA LOJA */
+.admin-button{
+position:fixed;right:12px;bottom:12px;
+width:auto;background:#171717;color:#fff;
+font-size:12px;padding:9px 12px;
+z-index:999
+}
+
+.admin-panel{
+display:none;
+position:fixed;
+inset:0;
+background:#0008;
+z-index:1000;
+padding:15px;
+overflow:auto
+}
+
+.admin-box{
+background:#fff;
+max-width:600px;
+margin:30px auto;
+border-radius:20px;
+padding:20px;
+box-shadow:0 10px 40px #0005
+}
+
+.admin-box h2{margin-top:0}
+
+.stock-item{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+padding:12px 0;
+border-bottom:1px solid #eee
+}
+
+.stock-name{font-weight:700}
+
+.status{
+font-size:12px;
+font-weight:800;
+padding:5px 8px;
+border-radius:8px
+}
+
+.status.available{
+background:#dcfce7;
+color:#166534
+}
+
+.status.paused{
+background:#fee2e2;
+color:#991b1b
+}
+
+.pause-button{
+padding:8px 10px;
+background:#eee;
+font-size:12px
+}
+
+.pause-button.paused{
+background:#dc2626;
+color:#fff
+}
+
+.close-admin{
+background:#eee;
+width:100%;
+margin-top:15px
+}
+
+.admin-info{
+font-size:13px;
+color:#666;
+line-height:1.5;
+background:#f7f5fb;
+padding:10px;
+border-radius:10px
+}
+
+.hidden{display:none!important}
+
+@media(max-width:600px){
+.grid{grid-template-columns:1fr 1fr}
+.card{padding:13px}
+.card h3{font-size:16px}
+.container{padding:12px}
+.checks{grid-template-columns:1fr 1fr}
+.stock-item{align-items:flex-start}
+}
 </style>
+
 </head>
+
 <body>
+
 <header>
   <div class="logo">WL</div>
   <h1>Açaí do WL</h1>
@@ -35,135 +188,613 @@ label{display:block;font-weight:700;margin:12px 0 6px}select,input,textarea{widt
 </header>
 
 <main class="container">
-  <h2 class="section-title">🥤 Escolha o tamanho</h2>
-  <div class="grid">
-    <div class="card"><h3>300 ml</h3><div class="desc">Açaí + 4 acompanhamentos.</div><div class="price">R$ 15,00</div><button class="add" onclick="addSimple('300 ml',15)">Adicionar</button></div>
-    <div class="card"><h3>500 ml</h3><div class="desc">Açaí + 4 acompanhamentos.</div><div class="price">R$ 20,00</div><button class="add" onclick="addSimple('500 ml',20)">Adicionar</button></div>
-    <div class="card"><h3>700 ml</h3><div class="desc">Açaí + 4 acompanhamentos.</div><div class="price">R$ 26,00</div><button class="add" onclick="addSimple('700 ml',26)">Adicionar</button></div>
+
+<h2 class="section-title">🥤 Escolha o tamanho</h2>
+
+<div class="grid">
+  <div class="card">
+    <h3>300 ml</h3>
+    <div class="desc">Açaí + 4 acompanhamentos.</div>
+    <div class="price">R$ 15,00</div>
+    <button class="add" onclick="addSimple('300 ml',15)">Adicionar</button>
   </div>
 
-  <h2 class="section-title">🍓 Monte seu açaí</h2>
-  <div class="custom">
-    <label for="size">Tamanho</label>
-    <select id="size">
-      <option value="300 ml|15">300 ml — R$ 15,00</option>
-      <option value="500 ml|20">500 ml — R$ 20,00</option>
-      <option value="700 ml|26">700 ml — R$ 26,00</option>
-    </select>
-
-    <label>Acompanhamentos — escolha até 4</label>
-    <div class="checks" id="toppings">
-      <label><input type="checkbox" value="Ovomaltine">Ovomaltine</label>
-      <label><input type="checkbox" value="Chocobool">Chocobool</label>
-      <label><input type="checkbox" value="Leite em pó">Leite em pó</label>
-      <label><input type="checkbox" value="Granulado">Granulado</label>
-      <label><input type="checkbox" value="Paçoca">Paçoca</label>
-      <label><input type="checkbox" value="Banana">Banana</label>
-      <label><input type="checkbox" value="Uva">Uva</label>
-      <label><input type="checkbox" value="Manga">Manga</label>
-      <label><input type="checkbox" value="Morango">Morango</label>
-    </div>
-
-    <label for="syrup">Calda</label>
-    <select id="syrup">
-      <option value="">Sem calda</option>
-      <option>Chocolate</option>
-      <option>Morango</option>
-      <option>Leite condensado</option>
-    </select>
-
-    <button class="add" style="margin-top:14px" onclick="addCustom()">Adicionar ao carrinho</button>
+  <div class="card">
+    <h3>500 ml</h3>
+    <div class="desc">Açaí + 4 acompanhamentos.</div>
+    <div class="price">R$ 20,00</div>
+    <button class="add" onclick="addSimple('500 ml',20)">Adicionar</button>
   </div>
 
-  <h2 class="section-title">⭐ Premium</h2>
-  <div class="grid">
-    <div class="card"><h3>Nutella</h3><div class="desc">Adicional premium.</div><div class="price">Consultar</div><button class="add" onclick="addSimple('Adicional Nutella',0)">Adicionar</button></div>
-    <div class="card"><h3>Creme da casa</h3><div class="desc">Adicional premium.</div><div class="price">Consultar</div><button class="add" onclick="addSimple('Adicional Creme da Casa',0)">Adicionar</button></div>
+  <div class="card">
+    <h3>700 ml</h3>
+    <div class="desc">Açaí + 4 acompanhamentos.</div>
+    <div class="price">R$ 26,00</div>
+    <button class="add" onclick="addSimple('700 ml',26)">Adicionar</button>
   </div>
+</div>
 
-  <div class="custom">
-    <h3 style="margin-top:0">📦 Seus dados</h3>
-    <label for="name">Nome</label>
-    <input id="name" placeholder="Seu nome">
-    <label for="address">Endereço</label>
-    <textarea id="address" rows="2" placeholder="Rua, número, bairro..."></textarea>
-    <label for="payment">Forma de pagamento</label>
-    <select id="payment">
-      <option>Pix</option><option>Dinheiro</option><option>Cartão</option>
-    </select>
-  </div>
+<h2 class="section-title">🍓 Monte seu açaí</h2>
 
-  <div class="cart">
-    <h2>🛒 Seu pedido</h2>
-    <div id="cartItems"><p style="color:#777">Seu carrinho está vazio.</p></div>
-    <div class="total">Total: R$ <span id="total">0,00</span></div>
-    <button class="whatsapp" onclick="sendWhatsApp()">📲 Finalizar pelo WhatsApp</button>
-    <button class="clear" onclick="clearCart()">Limpar pedido</button>
-    <div class="note">O WhatsApp abrirá com o resumo pronto. Antes de enviar, confira os dados e o total.</div>
-  </div>
+<div class="custom">
+
+<label for="size">Tamanho</label>
+
+<select id="size">
+<option value="300 ml|15">300 ml — R$ 15,00</option>
+<option value="500 ml|20">500 ml — R$ 20,00</option>
+<option value="700 ml|26">700 ml — R$ 26,00</option>
+</select>
+
+<label>Acompanhamentos — escolha até 4</label>
+
+<div class="checks" id="toppings">
+
+<label data-item="Ovomaltine">
+<input type="checkbox" value="Ovomaltine">Ovomaltine
+</label>
+
+<label data-item="Chocobool">
+<input type="checkbox" value="Chocobool">Chocobool
+</label>
+
+<label data-item="Leite em pó">
+<input type="checkbox" value="Leite em pó">Leite em pó
+</label>
+
+<label data-item="Granulado">
+<input type="checkbox" value="Granulado">Granulado
+</label>
+
+<label data-item="Paçoca">
+<input type="checkbox" value="Paçoca">Paçoca
+</label>
+
+<label data-item="Banana">
+<input type="checkbox" value="Banana">Banana
+</label>
+
+<label data-item="Uva">
+<input type="checkbox" value="Uva">Uva
+</label>
+
+<label data-item="Manga">
+<input type="checkbox" value="Manga">Manga
+</label>
+
+<label data-item="Morango">
+<input type="checkbox" value="Morango">Morango
+</label>
+
+</div>
+
+<label for="syrup">Calda</label>
+
+<select id="syrup">
+<option value="">Sem calda</option>
+<option data-item="Chocolate">Chocolate</option>
+<option data-item="Morango">Morango</option>
+<option data-item="Leite condensado">Leite condensado</option>
+</select>
+
+<button class="add" style="margin-top:14px" onclick="addCustom()">
+Adicionar ao carrinho
+</button>
+
+</div>
+
+<h2 class="section-title">⭐ Premium</h2>
+
+<div class="grid">
+
+<div class="card" data-premium="Nutella">
+<h3>Nutella</h3>
+<div class="desc">Adicional premium.</div>
+<div class="price">Consultar</div>
+<button class="add" onclick="addSimple('Adicional Nutella',0)">
+Adicionar
+</button>
+</div>
+
+<div class="card" data-premium="Creme da Casa">
+<h3>Creme da casa</h3>
+<div class="desc">Adicional premium.</div>
+<div class="price">Consultar</div>
+<button class="add" onclick="addSimple('Adicional Creme da Casa',0)">
+Adicionar
+</button>
+</div>
+
+</div>
+
+<div class="custom">
+
+<h3 style="margin-top:0">📦 Seus dados</h3>
+
+<label for="name">Nome</label> <input id="name" placeholder="Seu nome">
+
+<label for="address">Endereço</label>
+
+<textarea id="address" rows="2" placeholder="Rua, número, bairro..."></textarea>
+
+<label for="payment">Forma de pagamento</label>
+
+<select id="payment">
+<option>Pix</option>
+<option>Dinheiro</option>
+<option>Cartão</option>
+</select>
+
+</div>
+
+<div class="cart">
+
+<h2>🛒 Seu pedido</h2>
+
+<div id="cartItems">
+<p style="color:#777">Seu carrinho está vazio.</p>
+</div>
+
+<div class="total">
+Total: R$ <span id="total">0,00</span>
+</div>
+
+<button class="whatsapp" onclick="sendWhatsApp()">
+📲 Finalizar pelo WhatsApp
+</button>
+
+<button class="clear" onclick="clearCart()">
+Limpar pedido
+</button>
+
+<div class="note">
+O WhatsApp abrirá com o resumo pronto. Antes de enviar, confira os dados e o total.
+</div>
+
+</div>
+
 </main>
 
+<!-- BOTÃO DO PAINEL -->
+
+<button class="admin-button" onclick="openAdmin()">
+⚙️ Controle da loja
+</button>
+
+<!-- PAINEL -->
+
+<div class="admin-panel" id="adminPanel">
+
+<div class="admin-box">
+
+<h2>⚙️ Controle da loja</h2>
+
+<div id="pinArea">
+
+<p class="admin-info">
+Digite o PIN da loja para controlar os produtos disponíveis.
+</p>
+
+<input
+id="adminPin"
+type="password"
+inputmode="numeric"
+placeholder="Digite o PIN"
+
+>
+
+<button
+class="add"
+style="margin-top:10px"
+onclick="checkPin()"
+
+>
+
+Entrar </button>
+
+</div>
+
+<div id="stockArea" class="hidden">
+
+<p class="admin-info">
+Quando um ingrediente estiver sem estoque, toque em
+<strong>Pausar</strong>. Ele deixará de aparecer para os clientes.
+Quando chegar novamente, toque em <strong>Ativar</strong>.
+</p>
+
+<div id="stockList"></div>
+
+<button class="close-admin" onclick="closeAdmin()">
+Fechar painel
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 <script>
-// TROQUE PELO NÚMERO DO WHATSAPP DA SUA LOJA.
-// Formato: 55 + DDD + número. Exemplo: 5532999999999
+
+// ================================
+// CONFIGURAÇÕES
+// ================================
+
+// WhatsApp da loja
 const WHATSAPP = "5532987064492";
 
-let cart = [];
+// PIN DO PAINEL DA LOJA
+const ADMIN_PIN = "1234";
 
-function money(v){return v.toFixed(2).replace('.',',');}
+// Produtos/ingredientes controláveis
+const stockItems = [
+"Ovomaltine",
+"Chocobool",
+"Leite em pó",
+"Granulado",
+"Paçoca",
+"Banana",
+"Uva",
+"Manga",
+"Morango",
+"Chocolate",
+"Leite condensado",
+"Nutella",
+"Creme da Casa"
+];
 
-function addSimple(name, price){
-  cart.push({name,price,details:""});
-  render();
+// ================================
+// ESTOQUE
+// ================================
+
+let stockStatus = JSON.parse(
+localStorage.getItem("acaiWL_stock")
+) || {};
+
+function isAvailable(name){
+return stockStatus[name] !== false;
+}
+
+function saveStock(){
+localStorage.setItem(
+"acaiWL_stock",
+JSON.stringify(stockStatus)
+);
+}
+
+// ================================
+// ATUALIZA O CARDÁPIO
+// ================================
+
+function updateMenu(){
+
+// Acompanhamentos
+document.querySelectorAll("#toppings label").forEach(label=>{
+
+const name=label.dataset.item;
+
+if(isAvailable(name)){
+label.classList.remove("hidden");
+}else{
+label.classList.add("hidden");
+
+const checkbox=label.querySelector("input");
+if(checkbox) checkbox.checked=false;
+}
+
+});
+
+// Caldas
+const syrup=document.getElementById("syrup");
+
+[...syrup.options].forEach(option=>{
+
+if(!option.dataset.item) return;
+
+option.hidden=!isAvailable(option.dataset.item);
+
+if(!isAvailable(option.dataset.item) && option.selected){
+syrup.value="";
+}
+
+});
+
+// Premium
+document.querySelectorAll("[data-premium]").forEach(card=>{
+
+const name=card.dataset.premium;
+
+if(isAvailable(name)){
+card.classList.remove("hidden");
+}else{
+card.classList.add("hidden");
+}
+
+});
+
+renderStockPanel();
+
+}
+
+// ================================
+// PAINEL
+// ================================
+
+function openAdmin(){
+
+document.getElementById("adminPanel").style.display="block";
+document.getElementById("adminPin").value="";
+document.getElementById("pinArea").classList.remove("hidden");
+document.getElementById("stockArea").classList.add("hidden");
+
+}
+
+function closeAdmin(){
+
+document.getElementById("adminPanel").style.display="none";
+
+}
+
+function checkPin(){
+
+const pin=document.getElementById("adminPin").value;
+
+if(pin!==ADMIN_PIN){
+alert("PIN incorreto.");
+return;
+}
+
+document.getElementById("pinArea").classList.add("hidden");
+document.getElementById("stockArea").classList.remove("hidden");
+
+renderStockPanel();
+
+}
+
+function renderStockPanel(){
+
+const list=document.getElementById("stockList");
+
+if(!list) return;
+
+list.innerHTML=stockItems.map(name=>{
+
+const available=isAvailable(name);
+
+return `
+<div class="stock-item">
+
+<div>
+<div class="stock-name">${name}</div>
+
+<span class="status ${available?"available":"paused"}">
+${available?"DISPONÍVEL":"PAUSADO"}
+</span>
+</div>
+
+<button
+class="pause-button ${available?"":"paused"}"
+onclick="toggleStock('${name}')"
+>
+${available?"Pausar":"Ativar"}
+</button>
+
+</div>
+`;
+
+}).join("");
+
+}
+
+function toggleStock(name){
+
+stockStatus[name]=!isAvailable(name);
+
+saveStock();
+updateMenu();
+
+}
+
+// ================================
+// CARRINHO
+// ================================
+
+let cart=[];
+
+function money(v){
+return v.toFixed(2).replace('.',',');
+}
+
+function addSimple(name,price){
+
+if(name.includes("Nutella") && !isAvailable("Nutella")){
+alert("Nutella está temporariamente indisponível.");
+return;
+}
+
+if(name.includes("Creme da Casa") && !isAvailable("Creme da Casa")){
+alert("Creme da Casa está temporariamente indisponível.");
+return;
+}
+
+cart.push({
+name,
+price,
+details:""
+});
+
+render();
+
 }
 
 function addCustom(){
-  const [size,price] = document.getElementById('size').value.split('|');
-  const checks = [...document.querySelectorAll('#toppings input:checked')];
-  if(checks.length > 4){ alert("Escolha no máximo 4 acompanhamentos."); return; }
-  const toppings = checks.map(x=>x.value);
-  const syrup = document.getElementById('syrup').value;
-  let details = toppings.length ? "Acompanhamentos: " + toppings.join(", ") : "Sem acompanhamentos";
-  if(syrup) details += " | Calda: " + syrup;
-  cart.push({name:size, price:Number(price), details});
-  checks.forEach(x=>x.checked=false);
-  document.getElementById('syrup').value="";
-  render();
+
+const [size,price]=document
+.getElementById("size")
+.value.split("|");
+
+const checks=[
+...document.querySelectorAll("#toppings input:checked")
+];
+
+if(checks.length>4){
+
+alert("Escolha no máximo 4 acompanhamentos.");
+return;
+
+}
+
+const toppings=checks.map(x=>x.value);
+
+const syrup=document.getElementById("syrup").value;
+
+let details=toppings.length
+?"Acompanhamentos: "+toppings.join(", ")
+:"Sem acompanhamentos";
+
+if(syrup){
+details+=" | Calda: "+syrup;
+}
+
+cart.push({
+name:size,
+price:Number(price),
+details
+});
+
+checks.forEach(x=>x.checked=false);
+
+document.getElementById("syrup").value="";
+
+render();
+
 }
 
 function render(){
-  const box=document.getElementById('cartItems');
-  if(!cart.length){box.innerHTML='<p style="color:#777">Seu carrinho está vazio.</p>';}
-  else box.innerHTML=cart.map((it,i)=>`
-    <div class="item"><b>${i+1}. ${it.name}</b> — R$ ${money(it.price)}
-    ${it.details?`<br><small>${it.details}</small>`:''}
-    <br><button onclick="removeItem(${i})" style="padding:5px 8px;margin-top:5px;background:#eee">Remover</button></div>`).join('');
-  document.getElementById('total').textContent=money(cart.reduce((s,x)=>s+x.price,0));
+
+const box=document.getElementById("cartItems");
+
+if(!cart.length){
+
+box.innerHTML=
+'<p style="color:#777">Seu carrinho está vazio.</p>';
+
+}else{
+
+box.innerHTML=cart.map((it,i)=>`
+
+<div class="item">
+
+<b>${i+1}. ${it.name}</b> — R$ ${money(it.price)}
+
+${it.details?`<br><small>${it.details}</small>`:""}
+
+<br>
+
+<button
+onclick="removeItem(${i})"
+style="padding:5px 8px;margin-top:5px;background:#eee"
+>
+Remover
+</button>
+
+</div>
+
+`).join("");
+
 }
-function removeItem(i){cart.splice(i,1);render();}
-function clearCart(){cart=[];render();}
+
+document.getElementById("total").textContent=
+money(cart.reduce((s,x)=>s+x.price,0));
+
+}
+
+function removeItem(i){
+
+cart.splice(i,1);
+render();
+
+}
+
+function clearCart(){
+
+cart=[];
+render();
+
+}
+
+// ================================
+// WHATSAPP
+// ================================
 
 function sendWhatsApp(){
-  if(!cart.length){alert("Adicione pelo menos um produto.");return;}
-  const name=document.getElementById('name').value.trim();
-  const address=document.getElementById('address').value.trim();
-  const payment=document.getElementById('payment').value;
-  if(!name){alert("Informe seu nome.");return;}
-  if(!address){alert("Informe o endereço.");return;}
-  const total=cart.reduce((s,x)=>s+x.price,0);
-  let msg="🍇 *NOVO PEDIDO — AÇAÍ DO WL*\\n\\n";
-  msg+="👤 Cliente: "+name+"\\n";
-  msg+="📍 Endereço: "+address+"\\n";
-  msg+="💳 Pagamento: "+payment+"\\n\\n";
-  msg+="🛒 *Pedido:*\\n";
-  cart.forEach((x,i)=>{
-    msg+=`${i+1}. ${x.name} — R$ ${money(x.price)}\\n`;
-    if(x.details) msg+=`   ${x.details}\\n`;
-  });
-  msg+="\\n💰 *TOTAL: R$ "+money(total)+"*";
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank");
+
+if(!cart.length){
+
+alert("Adicione pelo menos um produto.");
+return;
+
 }
+
+const name=
+document.getElementById("name").value.trim();
+
+const address=
+document.getElementById("address").value.trim();
+
+const payment=
+document.getElementById("payment").value;
+
+if(!name){
+
+alert("Informe seu nome.");
+return;
+
+}
+
+if(!address){
+
+alert("Informe o endereço.");
+return;
+
+}
+
+const total=
+cart.reduce((s,x)=>s+x.price,0);
+
+let msg="🍇 *NOVO PEDIDO — AÇAÍ DO WL*\\n\\n";
+
+msg+="👤 Cliente: "+name+"\\n";
+msg+="📍 Endereço: "+address+"\\n";
+msg+="💳 Pagamento: "+payment+"\\n\\n";
+
+msg+="🛒 *Pedido:*\\n";
+
+cart.forEach((x,i)=>{
+
+msg+=`${i+1}. ${x.name} — R$ ${money(x.price)}\\n`;
+
+if(x.details){
+msg+=`   ${x.details}\\n`;
+}
+
+});
+
+msg+="\\n💰 *TOTAL: R$ "+money(total)+"*";
+
+window.open(
+"https://wa.me/"+WHATSAPP+
+"?text="+encodeURIComponent(msg),
+"_blank"
+);
+
+}
+
+// Inicializa
+updateMenu();
 render();
+
 </script>
+
 </body>
 </html>
